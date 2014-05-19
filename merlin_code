@@ -42,7 +42,9 @@ while True:
 
 
 
-input()
+import platform
+if platform.system()=='Windows':
+    input()
 
 
 
@@ -117,4 +119,6 @@ while list_of_unread:
     list_of_unread = list_of_unread[1:]
 
 
-input()
+import platform
+if platform.system()=='Windows':
+    input()
