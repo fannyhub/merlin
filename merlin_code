@@ -1,0 +1,120 @@
+#version 1, interactive
+import random
+import math
+print "MERLIN: I am a wise Merlin, I can tell you if you say Truth or not."
+while True:
+    s = raw_input("""YOU: """)
+    for e in ["'","?","!",":"," ",";",".","\,","\\","/",")","("]:
+        if e in s:
+            s = s.replace(e,"")
+
+    s = s.replace("=","==")
+    
+
+    if "isgreaterthan" in s:
+        
+        a = s.find("isgreaterthan")-1
+        b = s.find("isgreaterthan")+13
+        
+
+        try:
+            int(s[a])
+            try:
+                int(s[b])
+                
+                s = s.replace("isgreaterthan",">")
+                eval(s) == True or eval(s) == False
+                
+            except ValueError:
+                s = s
+        except ValueError:
+            s = s
+
+    try:
+        eval(s) == True or eval(s) == False
+        if eval(s) == True:
+            print """MERLIN: That is one of the great Truths of the powerful Science of Mathematics"""
+        elif eval(s) == False:
+            print """MERLIN: Shame on you for trying to fool an old Man!"""
+    except NameError:
+        print "MERLIN:",random.choice(["That is True, indeed","That is a Lie!","There are Mysteries that even Merlin does not know..."])
+            
+
+
+
+input()
+
+
+
+#version 2, Merlin 'talks to a virtual friend' (ok, that's pretty weird if you think about it;) )
+
+import string
+import random
+import math
+import sys
+import re
+friend = open("C:/PATH/friend.txt","r")
+#friend.close()
+friendly_string = str(friend.read())
+print "Merlin: i am a wise Merlin, I can tell you if you say Truth or not."
+
+list_of_unread = []
+unlisted_text = friendly_string
+while unlisted_text:
+    dot = unlisted_text.find(".")
+    list_of_unread.append(unlisted_text[:dot+2])
+    unlisted_text = unlisted_text[dot+2:]
+
+while list_of_unread:
+    
+    s = list_of_unread[0]
+    print "An Educated Friend: ", s
+    
+    for e in ["?","!",":"," ",";",".","\,","\\","/",")","("]:
+        if e in s:
+            s = s.replace(e,"")
+    s = s.replace("=","==")
+   
+    if "islessthan" in s:
+        
+        a = s.find("islessthan")-1
+        b = s.find("islessthan")+10
+        try:
+            int(s[a])
+            try:
+                int(s[b])
+                s = s.replace("islessthan","<")
+                eval(s)==True or eval(s) == False
+            except ValueError:
+                s = s
+        except ValueError:
+            s = s
+    if "isgreaterthan" in s:
+        
+        a = s.find("isgreaterthan")-1
+        b = s.find("isgreaterthan")+13
+       
+        try:
+            int(s[a])
+            try:
+                int(s[b])
+                
+                s = s.replace("isgreaterthan",">")
+                eval(s) == True or eval(s) == False
+                
+            except ValueError:
+                s = s
+        except ValueError:
+            s = s
+    try:
+        eval(s) == True or eval(s) == False
+        if eval(s) == True:
+            print "Merlin: that is one of the great Truths of the powerful Science of Mathematics"
+        elif eval(s) == False:
+            print "Merlin: Shame on you, get back to elementary school"
+    except NameError:
+        print "Merlin: ",random.choice(["That is True, indeed","That is Lie!","There are Mysteries that even Merlin does not know"])                             
+    list_of_unread = list_of_unread[1:]
+
+
+input()
